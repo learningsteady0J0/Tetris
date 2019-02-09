@@ -1,0 +1,51 @@
+windows.h
+
+COORD pos1 = { 2 , 4 };
+
+COORD 구조체  ==> 콘솔창의 x,y좌표 정보를 담을 수 있도록 정의되어있음.
+
+HANDLE hConsoleOut = GetStdHandel (STD_OUTPUT_HANDLE);
+
+HANDLE -> 콘솔 출력 창을 조절하는데 필요한 열쇠의 자료형
+
+GetStdHandel (STD_OUTPUT_HANDLE); 함수와 인자->콘솔 출력 창을 조절하는데 필요한 열쇠를 얻음
+
+SetConsoleCursorPosition(hConsoleOut, pos1);
+-> 콘솔의 커서 위치를 변경시키는 함수, 첫번째 인자값은 핸들값, 두번째 인자는 좌표값
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+CONSOLE_SCREEN_BUFFER_INFO curInfo;
+
+CONSOLE_SCREEN_BUFFER_INFO -> 콘솔 출력창의 정보를 담기 위해서 정의한 구조체
+
+GetConsoleScreenBufferInfo(
+	GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+함수 -> 콘솔 출력창의 정보를 얻기 위해 호출하는 함수
+첫 번째 인자 -> 콘솔 출력 창을 조절하는데 필요한 열쇠
+두 번째 인자 -> 주소값 (여기에 정보가 저장됨)
+
+printf(" [%d %d] \n", curInfo.dwCursorPosition.X, curInfo.dwCursorPosition.Y);
+요런식으로 쓰임.
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+CONSOLE_CURSOR_INFO curInfo;
+-> 콘솔의 커서 정보를 얻기 위해 사용되는 구조체
+
+GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+콘솔 출력창의 정보를 반환하는 함수 , 두번째 인자에 정보가 저장됨.
+
+curInfo.bVisible = 0;
+커서관련정보 변경(깜빡이 사라짐)
+
+SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+콘솔 출력창의 특성을 변경시킴 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Sleep(unsigned long dwMilliseconds);
+인자값에 N의 정수값을 넣으면 0.001 * N 만큼 실행이 멈춘다.
+
+
