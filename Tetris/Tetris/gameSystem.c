@@ -5,8 +5,11 @@
 #include "point.h"
 #include "blockModel.h"
 
+
 static int currentBlockModel;
 static int curPosX, curPosY;
+static int rotateSte;
+
 
 // 블록의 첫 위치 지정
 void InitNewBlockPos(int x, int y)
@@ -30,7 +33,7 @@ void ChooseBlock(void)
 // 현재 출력해야 하는 블록의 index 정보 반환
 int GetCurrentBlockIdx(void)
 {
-	return currentBlockModel;
+	return (currentBlockModel + rotateSte);
 }
 
 // 블럭 그리기
@@ -79,4 +82,46 @@ void BlockDown()
 
 	SetCurrentCursorPos(curPosX, curPosY);
 	ShowBlock(blockModel[GetCurrentBlockIdx()]);
+}
+
+//블럭 왼쪽으로 이동
+void BlockLeft(void)
+{
+	if (curPosX != 0) 
+	{
+		RemoveBlock(blockModel[GetCurrentBlockIdx()]);
+		curPosX -= 2;
+		
+		SetCurrentCursorPos(curPosX, curPosY);
+		ShowBlock(blockModel[GetCurrentBlockIdx()]);
+	}
+}
+
+//블럭 오른쪽으로 이동
+void BlockRight(void)
+{
+	if (curPosX < 60)
+	{
+		RemoveBlock(blockModel[GetCurrentBlockIdx()]);
+		curPosX += 2;
+
+		SetCurrentCursorPos(curPosX, curPosY);
+		ShowBlock(blockModel[GetCurrentBlockIdx()]);
+	}
+}
+
+//블럭 왼쪽으로 90도 회전
+void RotateBlock(void)
+{
+	int nextRotSte;
+
+	RemoveBlock(blockModel[GetCurrentBlockIdx()]);
+
+	nextRotSte = rotateSte + 1;
+	nextRotSte %= 4;
+	rotateSte = nextRotSte;
+	
+	SetCurrentCursorPos(curPosX, curPosY);
+	ShowBlock(blockModel[GetCurrentBlockIdx()]);
+
 }

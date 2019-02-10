@@ -7,6 +7,9 @@ void ShowBlock(char blockInfo[][4]);
 int ChooseBlock(void);
 void BlockDown();
 void RemoveBlock(char blockInfo[][4]);
+void BlockLeft(void);
+void BlockRight(void);
+void RotateBlock(void);
 
 #endif
 
