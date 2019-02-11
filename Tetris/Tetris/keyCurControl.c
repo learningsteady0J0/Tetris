@@ -3,6 +3,7 @@
 #include "point.h"
 #include "gameSystem.h"
 
+
 #define KEY_SENSITIVE		100
 #define SYS_DELAY			20
 
@@ -59,6 +60,9 @@ void UserKeyInput(void)
 				break;
 			case RIGHT :
 				BlockRight();
+				break;
+			case 13:
+				BlockDown();
 				break;
 			case UP :
 				RotateBlock();

@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blockStageControl.c" />
+    <ClCompile Include="keyCurControl.c" />
+    <ClCompile Include="tetrisMain.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blockInfo.h" />
+    <ClInclude Include="blockStageControl.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="keyCurControl.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{41C4C67D-D7C2-4508-9D1E-08D3B1F1E6DE}</ProjectGuid>
@@ -138,9 +149,6 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="1.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
